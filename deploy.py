@@ -56,6 +56,10 @@ def predict():
 
     #result
     result = model.predict(text_transformed)[0]
+    if result==0:
+        result = "Not Depression"
+    else:
+        result = "Depression"
     # confidence_score = model.decision_function(text_transformed)
     
     return render_template('./machinelearning.html', **locals())

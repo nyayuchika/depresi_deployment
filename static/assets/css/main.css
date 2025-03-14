@@ -565,7 +565,7 @@ h6 {
   border-color: var(--accent-color);
 }
 
-.footer .footer-newsletter .newsletter-form input[type=email] {
+.footer .footer-newsletter .newsletter-form input[type=text] {
   border: 0;
   padding: 4px;
   width: 100%;
