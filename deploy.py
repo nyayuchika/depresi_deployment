@@ -18,7 +18,7 @@ vectorizer = pickle.load(open('new_vectorizer.sav', 'rb'))
 @app.route('/')
 def home():
     result = ''
-    return render_template('./index.html', **locals())
+    return render_template('./machinelearning.html', **locals())
 
 
 @app.route('/predict', methods=['POST', 'GET'])
@@ -58,8 +58,7 @@ def predict():
     result = model.predict(text_transformed)[0]
     # confidence_score = model.decision_function(text_transformed)
     
-    return render_template('./index.html', **locals())
-    
+    return render_template('./machinelearning.html', **locals())
 
 
 if __name__ == '__main__':
