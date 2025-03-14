@@ -6,14 +6,23 @@ from sklearn.svm import SVC
 from nltk.corpus import stopwords
 import nltk
 from nltk.tokenize import word_tokenize
+from flask_talisman import Talisman
 
 app = Flask(__name__)
+
+
+#allowed font from google
+csp = {
+    'default-src': "'self'",
+    'style-src': ["'self'", "https://fonts.googleapis.com"],
+    'font-src': ["'self'", "https://fonts.gstatic.com"]
+}
+Talisman(app, content_security_policy=csp)
+
 #load the model
 model = pickle.load(open('new_depresimlmodel.sav', 'rb'))
 vectorizer = pickle.load(open('new_vectorizer.sav', 'rb'))
 
-# import os
-# print(os.lisdtdir())
 
 @app.route('/')
 def home():
@@ -68,7 +77,7 @@ def ml():
     return render_template('./machinelearning.html', **locals())
 
 # @app.route('/dl', methods=['POST', 'GET'])
-# def ml():
+# def dl():
 #     #ngambil input
 #     text_input = request.form.get('text_input','').strip()
     
