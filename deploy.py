@@ -77,7 +77,7 @@ def ml():
     return render_template('./machinelearning.html', **locals())
 
 @app.route('/dl', methods=['POST', 'GET'])
-def ml():
+def dl():
     #ngambil input
     text_input = request.form.get('text_input','').strip()
     
