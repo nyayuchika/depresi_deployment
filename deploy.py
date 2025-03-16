@@ -7,6 +7,15 @@ from nltk.corpus import stopwords
 import nltk
 from nltk.tokenize import word_tokenize
 from flask_talisman import Talisman
+import numpy as np
+import os
+import glob
+import tensorflow as tf
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.layers import *
+from tensorflow.keras.models import *
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 app = Flask(__name__)
 
