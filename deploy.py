@@ -76,48 +76,48 @@ def ml():
     
     return render_template('./machinelearning.html', **locals())
 
-# @app.route('/dl', methods=['POST', 'GET'])
-# def dl():
-#     #ngambil input
-#     text_input = request.form.get('text_input','').strip()
+@app.route('/dl', methods=['POST', 'GET'])
+def ml():
+    #ngambil input
+    text_input = request.form.get('text_input','').strip()
     
-#     #lowercase
-#     lowercase = text_input.lower()
+    #lowercase
+    lowercase = text_input.lower()
    
-#     #remove punct
-#     import re
-#     punctuation = re.sub("[^\w\s\d]","",lowercase)
+    #remove punct
+    import re
+    punctuation = re.sub("[^\w\s\d]","",lowercase)
    
-#     #convert slang
-#     alay_dict = pd.read_csv('new_kamusalay.csv', encoding='latin-1', header=None)
-#     alay_dict = alay_dict.rename(columns={0:'original', 1:'replacement'})
-#     alay_dict_map = dict(zip(alay_dict['original'], alay_dict['replacement']))
-#     def normalize_alay(text):
-#         return " ".join([alay_dict_map[word] if word in alay_dict_map else word for word in text.split()])
-#     normalize_alay = normalize_alay(punctuation)
+    #convert slang
+    alay_dict = pd.read_csv('new_kamusalay.csv', encoding='latin-1', header=None)
+    alay_dict = alay_dict.rename(columns={0:'original', 1:'replacement'})
+    alay_dict_map = dict(zip(alay_dict['original'], alay_dict['replacement']))
+    def normalize_alay(text):
+        return " ".join([alay_dict_map[word] if word in alay_dict_map else word for word in text.split()])
+    normalize_alay = normalize_alay(punctuation)
    
-#     #remove stopwords
-#     nltk.download('punk')
-#     nltk.download('stopwords')
-#     text_tokens = word_tokenize(normalize_alay)
-#     tokens_without_sw = [word for word in text_tokens if not word in stopwords.words()]
-#     filtered_sentence = (" ").join(tokens_without_sw)
-#     filtered_sentence = [filtered_sentence]
+    #remove stopwords
+    nltk.download('punk')
+    nltk.download('stopwords')
+    text_tokens = word_tokenize(normalize_alay)
+    tokens_without_sw = [word for word in text_tokens if not word in stopwords.words()]
+    filtered_sentence = (" ").join(tokens_without_sw)
+    filtered_sentence = [filtered_sentence]
 
-#     #convert input
-#     text_transformed = vectorizer.transform(filtered_sentence)
-#     # #cek dulu gaiss
-#     # array = text_transformed.toarray()
+    #convert input
+    text_transformed = vectorizer.transform(filtered_sentence)
+    # #cek dulu gaiss
+    # array = text_transformed.toarray()
 
-#     #result
-#     result = model.predict(text_transformed)[0]
-#     if result==0:
-#         result = "Not Depression"
-#     else:
-#         result = "Depression"
-#     # confidence_score = model.decision_function(text_transformed)
+    #result
+    result = model.predict(text_transformed)[0]
+    if result==0:
+        result = "Not Depression"
+    else:
+        result = "Depression"
+    # confidence_score = model.decision_function(text_transformed)
     
-#     return render_template('./deeplearning.html', **locals())
+    return render_template('./deeplearning.html', **locals())
 
 if __name__ == '__main__':
     app.run(debug=True)
