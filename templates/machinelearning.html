@@ -90,10 +90,17 @@
             <h4>Input Text</h4>
             <p>The result will be into depression or not depression.</p>
             <form action="{{ url_for('ml') }}" method="post" class="php-email-form">
-              <div class="newsletter-form"><input type="text" name="text_input"><input type="submit" value="Predict"></div>
+              Input Text: <input type='text' name='text_input'><br>
+              Your Input: {{text_input}}<br>
+              Class: {{result}}<br>
+              <!-- Array: {{array}}<br> -->
+              <!-- Confidence Score: {{confidence_score}} -->
+              <input type='submit' value='Predict'>
+              <!-- <div class="newsletter-form"><input type="text" name="text_input"><input type="submit" value="Predict"></div>
               <div class="loading">Loading</div>
               <div class="sent-message">Thank you!</div>
               <h5 style="text-align: center">Result: {{result}}</h5>
+              <h5 style="text-align: center">Confidence Score: {{confidence_score}}</h5> -->
             </form>
           </div>
         </div>
